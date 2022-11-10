@@ -1,0 +1,51 @@
+body {
+    background-image: url("https://37.media.tumblr.com/9d2bbcfc1917344773921eb5881a7ff5/tumblr_mzervoFOuI1ru3nbdo6_r1_250.png");
+}
+
+.edit {
+    position: relative;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+}
+
+.delete {
+    position: relative;
+    padding: 0px;
+    height: 32px;
+    width: 32px;
+}
+
+.bi-pencil-square {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 5px;
+}
+
+span {
+    vertical-align: middle;
+}
+
+#divModifica {
+    display: none;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px dashed #0D6EFD;
+}
+
+/* ITALIC PLACEHOLDERS */
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+:-moz-placeholder {
+    font-style: italic;
+}
+::-moz-placeholder {
+    font-style: italic;
+}
+:-ms-input-placeholder {
+    font-style: italic;
+}

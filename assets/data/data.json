@@ -1,0 +1,29 @@
+{
+  "elenco": [
+    {
+      "nome": "Serena",
+      "cognome": "Mude-Koko",
+      "id": 1
+    },
+    {
+      "nome": "Elena",
+      "cognome": "Montagnin",
+      "id": 2
+    },
+    {
+      "nome": "Giovanni",
+      "cognome": "Montagnin",
+      "id": 3
+    },
+    {
+      "nome": "Clara",
+      "cognome": "Placani",
+      "id": 4
+    },
+    {
+      "nome": "Sereno",
+      "cognome": "Montagnin",
+      "id": 5
+    }
+  ]
+}
