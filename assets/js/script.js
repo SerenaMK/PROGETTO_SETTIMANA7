@@ -53,6 +53,7 @@ function printData() {
 			}
 		})
 		.then(() => {
+			// li a colori alternati
 			const odds = document.querySelectorAll("li:nth-of-type(odd)");
 			odds.forEach((riga) => {
 				riga.classList.add("list-group-item-info");
@@ -91,8 +92,6 @@ async function addData(data) {
 function clearForm() {
 	nome.value = "";
 	cognome.value = "";
-	newNome.value = "";
-	newCognome.value = "";
 }
 
 
