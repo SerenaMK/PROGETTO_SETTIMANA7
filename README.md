@@ -1,4 +1,4 @@
-# PROGETTO_SETTIMANA7
+# ATTENZIONE!
 
 Richiede l'uso di
 - json-server --watch assets/data/data.json
