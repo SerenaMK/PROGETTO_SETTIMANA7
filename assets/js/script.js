@@ -1,10 +1,12 @@
 var nome;
 var cognome;
 var addBtn;
+var svuotaBtn;
 var elencoHTML;
 var errore;
 var erroreElenco;
 var elenco = [];
+var cronologia = [];
 var modificaId;
 var toggle = true;
 
@@ -14,10 +16,12 @@ function init() {
 	nome = document.getElementById("nome");
 	cognome = document.getElementById("cognome");
 	addBtn = document.getElementById("scrivi");
+	svuotaBtn = document.getElementById("svuota");
 	elencoHTML = document.getElementById("elenco");
 	errore = document.getElementById("errore");
 	erroreElenco = document.getElementById("erroreElenco");
 	printData();
+	printCrono();
 	eventHandler();
 }
 
@@ -28,6 +32,10 @@ function eventHandler() {
 		} else {
 			modifica(modificaId);
 		}
+	});
+
+	svuotaBtn.addEventListener("click", function () {
+		svuota(data);
 	});
 }
 
@@ -76,6 +84,7 @@ function controlla() {
 			cognome: cognome.value,
 		};
 		addData(data);
+		addCrono(data);
 
 	} else {
 
@@ -103,10 +112,10 @@ async function addData(data) {
 	clearForm();
 }
 
-function clearForm() {
-	nome.value = "";
-	cognome.value = "";
-}
+// function clearForm() {
+// 	nome.value = "";
+// 	cognome.value = "";
+// }
 
 
 
@@ -206,8 +215,56 @@ function cleanSelect() {
 
 // CRONOLOGIA
 
-function addCrono() {
-	var crono = document.getElementById("cronologia");
+// function addCrono() {
+var crono = document.getElementById("cronologia");
 
-	crono.innerHTML = `<li class="list-group-item list-group-item-light">${nome.value} ${cognome.value}</li>`;
+// 	crono.innerHTML += `<li class="list-group-item list-group-item-light">${nome.value} ${cognome.value}</li>`;
+
+// 	console.log(`${nome.value} ${cognome.value}`);
+// }
+
+function printCrono() {
+	fetch('http://localhost:4000/cronologia')
+		.then((response) => {
+			return response.json();
+		})
+		.then((chronology) => {
+			cronologia = chronology;
+			if (cronologia.length > 0) {
+				errore.innerHTML = "";
+				crono.innerHTML = "";
+				cronologia.map(function (element) {
+					crono.innerHTML += `
+					<li class="list-group-item list-group-item-light">
+					${element.nome} ${element.cognome}
+					</li>
+					`;
+				});
+			} else {
+				errore.innerHTML = "Errore cronologia";
+			}
+		});
+}
+
+async function addCrono(data) {
+	let response = await fetch('http://localhost:4000/cronologia', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		},
+		body: JSON.stringify(data)
+	});
+	clearForm();
+}
+
+async function svuota() {
+
+	if (!window.confirm("Sei sicur* di voler svuotare la cronologia?")) {
+		return;
+	};
+
+	let response = await fetch('http://localhost:4000/cronologia/', {
+		method: 'DELETE'
+	});
+
 }
