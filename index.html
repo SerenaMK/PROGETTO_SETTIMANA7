@@ -24,25 +24,46 @@
     
     <div class="container">
         <div class="row">
+
+            <!-- COLONNA FORM -->
             <div class="col-md-6 bg-white shadow border p-3 bg-opacity-75 rounded">
                 <h3 class="text-center text-primary text-opacity-75 mb-4"><i class="bi bi-person-plus-fill"></i> FORM DI INSERIMENTO DATI</h3>
+
                 <form id="form">
                     <fieldset class="border p-4 rounded bg-white bg-opacity-50">
+
+                        <p class="text-center fst-italic text-primary mb-3" id="editText"></p>
+
                         <label for="nome" class="form-label fw-bold text-secondary">NOME</label>
                         <input type="text" id="nome" class="form-control mb-3">
+
                         <label for="cognome" class="form-label fw-bold text-secondary">COGNOME</label>
                         <input type="text" id="cognome" class="form-control mb-4">
+
                         <button type="button" class="btn btn-primary" id="scrivi">INVIA</button>
+
                     </fieldset>
                 </form>
                 <h4 id="errore" class="text-center text-danger fst-italic fw-bold mt-2"></h4>
             </div>
 
+            <!-- COLONNA LISTA UTENTI -->
             <div class="col-md-6 bg-white shadow border p-3 bg-opacity-75 rounded">
                 <h3 class="text-center text-primary text-opacity-75 mb-4"><i class="bi bi-people-fill"></i> ELENCO</h3>
                 <h3 id="erroreElenco" class="fst-italic text-secondary text-center"></h3>
                 
                 <ul id="elenco" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 bg-white shadow border p-3 bg-opacity-75 rounded">
+                <h3 class="text-center text-primary text-opacity-75 mb-4"><i class="bi bi-clock-history"></i></i> CRONOLOGIA</h3>
+
+                <ul id="cronologia" class="list-group">
+                </ul>
             </div>
         </div>
     </div>

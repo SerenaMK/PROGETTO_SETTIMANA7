@@ -5,10 +5,8 @@ var elencoHTML;
 var errore;
 var erroreElenco;
 var elenco = [];
-var newNome;
-var newCognome;
-var toggle = true;
 var modificaId;
+var toggle = true;
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -78,6 +76,7 @@ function controlla() {
 			cognome: cognome.value,
 		};
 		addData(data);
+
 	} else {
 
 		// Avviso
@@ -112,13 +111,13 @@ function clearForm() {
 
 
 // DELETE
-function elimina(data) {
+async function elimina(data) {
 
 	if (!window.confirm("Sei sicur*?")) {
 		return;
 	};
 
-	fetch('http://localhost:3000/elenco/' + data, {
+	let response = await fetch('http://localhost:3000/elenco/' + data, {
 		method: 'DELETE'
 	});
 
@@ -126,7 +125,7 @@ function elimina(data) {
 }
 
 // PUT
-function modifica(data) {
+async function modifica(data) {
 
 	if (nome.value == '' || cognome.value == '') {
 
@@ -142,13 +141,13 @@ function modifica(data) {
 		return;
 	};
 
-	if (!window.confirm("Modificare l'utente?") && !toggle) {
+	if (!window.confirm("Modificare l'utente?")) {
 		return;
 	};
 
 
 
-	fetch('http://localhost:3000/elenco/' + data, {
+	let response = await fetch('http://localhost:3000/elenco/' + data, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
@@ -162,23 +161,18 @@ function modifica(data) {
 }
 
 function openEdit(dataId, dataName, dataSurname) {
-
-	// Metti i values dentro gli input
-
 	toggle = false;
-
 	modificaId = dataId;
 
+	cleanSelect();
+
+	// Metti i values dentro gli input
 	nome.value = dataName;
 	cognome.value = dataSurname;
 
 	// Metti questo button nel sotto-div di modifica
 
 	if (toggle == false) {
-		// Evidenzia ciò che si sta modificando
-		document.querySelector(`li:nth-of-type(${dataId})`).style.opacity = "0.5";
-		document.querySelector(`li:nth-of-type(${dataId})`).style.fontStyle = "italic";
-		document.querySelector(`li:nth-of-type(${dataId})`).style.border = "2px dashed #0D6EFD";
 
 		// Cambia il colore del button
 		addBtn.classList.remove("btn-primary");
@@ -187,6 +181,33 @@ function openEdit(dataId, dataName, dataSurname) {
 
 		// Cambia il colore del bordo del fieldset
 		document.querySelector("fieldset").classList.add("border-info");
-	}
 
+		// Fai comparire il testo di spiegazione
+		document.getElementById("editText").innerHTML = "Inserisci il nome ed il cognome che andranno a sostituire quello corrente:<br><hr>";
+
+
+		// Evidenzia ciò che si sta modificando
+
+		document.querySelector(`li:nth-of-type(${dataId})`).style.opacity = "0.5";
+		document.querySelector(`li:nth-of-type(${dataId})`).style.fontStyle = "italic";
+		document.querySelector(`li:nth-of-type(${dataId})`).style.border = "2px dashed #0D6EFD";
+	}
+}
+
+function cleanSelect() {
+	// Ripristina gli style dei li
+	const lis = document.querySelectorAll("li");
+	lis.forEach((riga) => {
+		riga.style.opacity = null;
+		riga.style.fontStyle = null;
+		riga.style.border = null;
+	});
+};
+
+// CRONOLOGIA
+
+function addCrono() {
+	var crono = document.getElementById("cronologia");
+
+	crono.innerHTML = `<li class="list-group-item list-group-item-light">${nome.value} ${cognome.value}</li>`;
 }

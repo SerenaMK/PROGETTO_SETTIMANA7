@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://37.media.tumblr.com/df649b19489b2954788d8856188cdd18/tumblr_movcawwYsM1ru3nbdo1_250.png");
+    background-image: url("https://64.media.tumblr.com/afd426a064482261a08716955dda46e6/tumblr_inline_npmlymhBeq1rnjuep_540.png");
 }
 
 .edit {
@@ -36,16 +36,25 @@ hr {
     border-bottom: 1px dashed #0D6EFD;
 }
 
+#cronologia {
+    height: 12em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 /* ITALIC PLACEHOLDERS */
 ::-webkit-input-placeholder {
     font-style: italic;
 }
+
 :-moz-placeholder {
     font-style: italic;
 }
+
 ::-moz-placeholder {
     font-style: italic;
 }
+
 :-ms-input-placeholder {
     font-style: italic;
 }
