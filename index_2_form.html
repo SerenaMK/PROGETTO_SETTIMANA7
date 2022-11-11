@@ -18,30 +18,43 @@
 
 <body>
 
-    <header class="container-fluid bg-primary bg-opacity-75 bg-gradient text-white d-flex justify-content-center py-3 mb-5 fst-italic">
+    <header class="container-fluid bg-success bg-gradient text-white d-flex justify-content-center py-3 mb-5 fst-italic bg-opacity-75">
         <h2>Lista utenti dinamica</h2>
     </header>
     
     <div class="container">
         <div class="row">
             <div class="col-md-6 bg-white shadow border p-3 bg-opacity-75 rounded">
-                <h3 class="text-center text-primary text-opacity-75 mb-4"><i class="bi bi-person-plus-fill"></i> FORM DI INSERIMENTO DATI</h3>
+                <h3 class="text-center text-success mb-4"><i class="bi bi-person-plus-fill"></i> FORM DI INSERIMENTO DATI</h3>
                 <form id="form">
                     <fieldset class="border p-4 rounded bg-white bg-opacity-50">
                         <label for="nome" class="form-label fw-bold text-secondary">NOME</label>
                         <input type="text" id="nome" class="form-control mb-3">
                         <label for="cognome" class="form-label fw-bold text-secondary">COGNOME</label>
                         <input type="text" id="cognome" class="form-control mb-4">
-                        <button type="button" class="btn btn-primary" id="scrivi">INVIA</button>
+                        <button type="button" class="btn btn-success" id="scrivi">INVIA</button>
                     </fieldset>
                 </form>
                 <h4 id="errore" class="text-center text-danger fst-italic fw-bold mt-2"></h4>
             </div>
 
             <div class="col-md-6 bg-white shadow border p-3 bg-opacity-75 rounded">
-                <h3 class="text-center text-primary text-opacity-75 mb-4"><i class="bi bi-people-fill"></i> ELENCO</h3>
+                <h3 class="text-center text-success mb-4"><i class="bi bi-people-fill"></i> ELENCO</h3>
                 <h3 id="erroreElenco" class="fst-italic text-secondary text-center"></h3>
-                
+
+
+                <div id="divModifica">
+                    <p class="text-center fst-italic text-primary mb-2">Inserisci il nome ed il cognome che andranno a sostituire quello corrente:</p>
+                    <div class="input-group" id="subModifica">
+                        <span class="input-group-text bg-primary bg-opacity-10 border border-primary border-opacity-25 text-primary">Nome e cognome</span>
+
+                        <input type="text" id="newNome" class="form-control border border-primary border-opacity-25" placeholder="Nome (es. Mario)">
+                        <input type="text" id="newCognome" class="form-control border border-primary border-opacity-25" placeholder="Cognome (es. Rossi)">
+                    </div>
+                    <p id="attenzione" class="text-center text-danger fst-italic fw-bold mt-2"></p>
+                    <hr class="opacity-50">
+                </div>
+
                 <ul id="elenco" class="list-group"></ul>
             </div>
         </div>
@@ -52,7 +65,7 @@
         integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3'
         crossorigin='anonymous'></script>
     <!-- My Script -->
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script_2_form.js"></script>
 </body>
 
 </html>
