@@ -124,7 +124,7 @@ function clearForm() {
 async function elimina(data) {
 
 	// Conferma
-	if (!window.confirm("Sei sicur*?")) {
+	if (!window.confirm("Sei sicur* di volerlo eliminare?")) {
 		return;
 	};
 
